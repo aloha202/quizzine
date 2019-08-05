@@ -1,0 +1,51 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    #title:        symfony project
+    #description:  symfony project
+    #keywords:     symfony, project
+    #language:     en
+    #robots:       index, follow
+
+  stylesheets:
+    - https://fonts.googleapis.com/icon?family=Material+Icons
+    - /materialize/css/materialize.css
+    - /materialize/css/style.css
+    - http://use.fontawesome.com/releases/v5.0.6/css/all.css
+    - ui-lightness/jquery-ui-1.8.16.custom.css    
+    #- /bootstrap/css/bootstrap.icon-large.min.css
+    - library/imgareaselect-default.css
+    - library/imgareaselect-animated.css    
+    - admin_front.css
+    - custom.css?ver=1234
+    - system.css
+    
+
+  javascripts:
+    - http://maps.google.com/maps/api/js?sensor=false    
+    - https://code.jquery.com/jquery-2.1.1.min.js
+    - /materialize/js/materialize.js
+    - /materialize/js/init.js
+#    - library/jquery-1.7.1.min.js
+#    - /bootstrap/js/bootstrap.min.js
+    - jquery-ui-1.8.16.custom.min.js    
+    - system.js
+#    - jquery.cookie.js
+#    - jquery.jcarousel.min.js
+ #   - jquery.dropotron-1.0.js
+    #- http://maps.googleapis.com/maps/api/js?key=AIzaSyBVhUpviRpn-KGpop4SHyZ2SerETg0EiUg&sensor=false   
+    - sfForm.js
+#    - jquery.slidertron-1.1.js
+#    - jquery.thickbox.js
+    - jquery-plugins.js
+    - library/jquery.imgareaselect.js      
+    - admin_front.js
+    - global.js
+
+  has_layout:     true
+  layout:         layout

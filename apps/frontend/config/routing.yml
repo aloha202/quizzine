@@ -1,0 +1,79 @@
+join:
+  url: /join-us-now
+  param: { module: default, action: join }
+quizzine_teachers:
+  url: /quizzine/teachers
+  param: { module: default, action: teachers }
+profile_quizzes:
+  url: /:username/profile/quizzes
+  param: { module: profile, action: quizzes }
+profile_avatar:
+  url: /:username/profile/avatar
+  param: { module: profile, action: avatar }
+profile_password:
+  url: /:username/profile/password
+  param: { module: profile, action: password }
+profile:
+  url: /:username/profile
+  param: { module: profile, action: index }
+user_home:
+  url: /:username
+  param: { module: quizz, action: home }
+user_quizzes:
+  url: /:username/quizzes
+  param: { module: quizz, action: userQuizzes }
+quizz_answer:
+  url: /:username/quizz/answer
+  param: { module: quizz, action: answer }
+quizz_show:
+  url: '/:username/quizz/:id/:slug.html'
+  param: { module: quizz, action: show }
+  class: sfDoctrineRoute
+  options: { type: object, model: Quizz }
+activate:
+  url: /:username/auth/activate
+  param: { module: auth, action: activate }
+registration_complete:
+  url: /:username/auth/registration/complete
+  param: { module: auth, action: registrationComplete }
+signin:
+  url: /:username/auth/signin
+  param: { module: auth, action: signin }
+register:
+  url: /:username/auth/register
+  param: { module: auth, action: register }
+signout:
+  url: /:username/auth/signout
+  param: { module: auth, action: signout }
+
+oauth_bridge:
+  url: /oauth/bridge
+  param: { module: oauth, action: bridge }
+oauth_bridge_confirm:
+  url: /oauth/bridgeconfirm
+  param: { module: oauth, action: bridgeConfirm }
+oauth:
+  url: '/oauth/:type'
+  param: { module: oauth, action: oauth }
+ip_banned:
+  url: /your-ip-address-is-banned
+  param: { module: default, action: ipBanned }
+sitemap_xml:
+  url: /sitemap.xml
+  param: { module: sitemap, action: xml }
+change_language:
+  url: /change_language
+  param: { module: language, action: changeLanguage }
+page_show:
+  url: '/page/:slug'
+  param: { module: page, action: show }
+  class: sfDoctrineRoute
+  options: { type: object, model: Page }
+homepage:
+  url: /
+  param: { module: default, action: index }
+default_index:
+  url: '/:module'
+  param: { action: index }
+default:
+  url: '/:module/:action/*'

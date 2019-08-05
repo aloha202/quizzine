@@ -1,0 +1,8 @@
+---
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: mysql:host=localhost;dbname=quizzine
+      username: root
+      password: null

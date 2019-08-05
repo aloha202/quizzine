@@ -1,0 +1,65 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+all:
+  sf_admin_dash:
+    site: 'Quizzine'
+    menu2:
+      My Quizzes:
+        icon: cutlery
+        url:          quizz
+        new_messages: QuizzTake
+      Settings:
+        icon: user
+        url:  user_config_settings/index
+      Customize:
+        icon: cog
+        url:  user_config_design/index
+      Change password:
+        icon: lock
+        url: user_user/index
+
+    menu:
+      Content:
+        icon: barcode
+        items:
+          Pages:
+            icon: file-text-o
+            url:          page
+          Text Blocks:
+            icon: file-text              
+            url:          text_block
+      Пользователи:
+        icon: user          
+        items:
+          Пользователи:
+            url: 'user/index'
+            icon: user
+      Запросы:
+        url: 'application_request/index'
+        icon: beer
+        new_messages: ApplicationRequest
+      Настройки:
+        icon: cog
+        items:
+          Настройки:
+            icon: cog
+            url: 'settings/index'  
+          Email шаблоны:
+            icon: envelope
+            url: 'email_template/index'
+          Редирект 301:
+            icon: mail-forward
+            url: redirect301/index
+      Notifications:
+        icon: bell
+        items:
+          Notifications:
+            icon: bell
+            url:          site_event
+            new_messages: SiteEvent
+          Сообщения:
+            icon: envelope
+            url:          site_message
+            new_messages: SiteMessage
+

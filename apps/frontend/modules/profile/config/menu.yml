@@ -1,0 +1,5 @@
+- ['Мой профиль', '@profile', []]
+- ['Фотография', '@profile_avatar', []]
+# - ['На карте', 'gmaps', []]
+- ['Изменить пароль', '@profile_password', []]
+- ['My Quizzes', '@profile_quizzes', []]

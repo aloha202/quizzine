@@ -1,0 +1,75 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           Quizz
+    theme:                 my_admin_lanceng
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          quizz
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: My Quizzes
+        table_method: tmList
+        display: [name, _display, ;is_active, _results]
+        object_actions:
+          questions: {action: questions, label: Questions, params: {class: 'btn btn-default', style: 'font-size: 10px'}}
+          _edit: ~
+          _delete: ~
+          geturl: {label: Get URL, action: geturl, params: {class: 'btn btn-default system_popup_link', style: 'font-size: 10px'}}
+        batch_actions: {}
+        actions:
+          _new: {label: Add New Quizz}
+      filter:
+        display: [name]
+      form:
+        actions:
+          _list: {label: Cancel}
+          _save: ~
+          _save_and_add: {label: Save and Add Questions}
+          _save_and_list: ~
+      edit:
+        actions:
+          _list: {label: Back to my Quizzes}
+          _save: ~
+          _save_and_add: {label: Save and Add Questions}
+          _save_and_list: ~
+      new:     ~
+      
+#    extra:
+#      export:
+#        filename: '%date% - My export'
+#        mode: 'csv'      #[csv, xlsx]
+#        dateformat: 'Y.m.d'
+#        encoding: 'windows-1251'
+#      javascript:
+#        ajax_form_validation: #22.10.2014
+#          fields: [name, email, directory]
+#        remoteoptions:
+#          purchase:
+#            trigger: purchase_id
+#            url: util/purchasePriceByPurchase
+#            update: purchase_price_id
+#        remotedata:
+#          customer:
+#            trigger: customer_id
+#            url: util/remoteCustomerData
+#            fields: [customer_name, customer_address]  
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]
+#           #reverse: true
+#        showhide_selects:
+#          type:
+#            toggler: type
+#            values:
+#              default: []
+#              articles: [articles]
+#              category: [category_discount, categories_list]

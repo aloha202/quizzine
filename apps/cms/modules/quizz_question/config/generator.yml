@@ -1,0 +1,66 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           QuizzQuestion
+    theme:                 my_admin_lanceng
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          quizz_question
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        name: {label: Question}
+      list:
+        batch_actions: {}
+        display: [name, _answers]
+        actions:
+          back: {action: back, label: Back to my Quizzes, params: {class: 'btn btn-default'}}
+          _new: {label: Add New Question}
+      filter:
+        display: [quizz_id]
+      form:
+        actions:
+          _list: {label: Back to Questions}
+          _save: {label: Save and Add Answers}
+          _save_and_list: {label: Save and Back to Questions}
+      edit: ~
+      new: ~
+      
+    extra:
+      new:
+        fromfilters: [quizz_id]
+#      export:
+#        filename: '%date% - My export'
+#        mode: 'csv'      #[csv, xlsx]
+#        dateformat: 'Y.m.d'
+#        encoding: 'windows-1251'
+#      javascript:
+#        ajax_form_validation: #22.10.2014
+#          fields: [name, email, directory]
+#        remoteoptions:
+#          purchase:
+#            trigger: purchase_id
+#            url: util/purchasePriceByPurchase
+#            update: purchase_price_id
+#        remotedata:
+#          customer:
+#            trigger: customer_id
+#            url: util/remoteCustomerData
+#            fields: [customer_name, customer_address]  
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]
+#           #reverse: true
+#        showhide_selects:
+#          type:
+#            toggler: type
+#            values:
+#              default: []
+#              articles: [articles]
+#              category: [category_discount, categories_list]

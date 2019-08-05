@@ -1,0 +1,65 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           UserConfigDesign
+    theme:                 my_admin_lanceng
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          user_config_design
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    ~
+      filter:  ~
+      form:
+        display:
+          "Top":
+            display: [top_background_color, top_text_color, top_text2_color]
+          "Bottom":
+            display: [bottom_background_color, bottom_text_color, bottom_text2_color, bottom_link_color]
+          "Quizz":
+            display: [quizz_text_color, button1_background_color, button1_text_color, button2_background_color, button2_text_color]
+          "About & Content":
+            display: [header1_color, header2_color, header3_color, header4_color, link_color, text_color]
+        actions:
+          _save: ~
+      edit:
+        title: Customize design
+      new:     ~
+      
+#    extra:
+#      export:
+#        filename: '%date% - My export'
+#        mode: 'csv'      #[csv, xlsx]
+#        dateformat: 'Y.m.d'
+#        encoding: 'windows-1251'
+#      javascript:
+#        ajax_form_validation: #22.10.2014
+#          fields: [name, email, directory]
+#        remoteoptions:
+#          purchase:
+#            trigger: purchase_id
+#            url: util/purchasePriceByPurchase
+#            update: purchase_price_id
+#        remotedata:
+#          customer:
+#            trigger: customer_id
+#            url: util/remoteCustomerData
+#            fields: [customer_name, customer_address]  
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]
+#           #reverse: true
+#        showhide_selects:
+#          type:
+#            toggler: type
+#            values:
+#              default: []
+#              articles: [articles]
+#              category: [category_discount, categories_list]
