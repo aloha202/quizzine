@@ -15,6 +15,7 @@
     <?php if (!$Quizz->isPassed()): ?>
 
 
+
         <div class="quizz quizz-display-<?php echo $Quizz->display; ?>">
             <form method='post' action='<?php echo url_for('@quizz_answer?username=' . $sf_user->getQuizzHost()->getUsername()); ?>' id="quizz_form">
                 <input type='hidden' name='quizz_id' value='<?php echo $Quizz->id; ?>'>
@@ -64,6 +65,9 @@
 
             </form>
         </div>
+
+
+
 
         <script type="text/javascript">
 
