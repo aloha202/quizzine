@@ -30,8 +30,12 @@ class quizzActions extends myActions {
 
 	public function executeShow(sfWebRequest $request) {
 		$this->Quizz = $this->getRoute()->getObject();
+
 		$this->forward404Unless($this->Quizz->user_id == $this->quizzHost->id);
 		$this->getResponse()->setTitle($this->Quizz->name);
+
+		$this->setLayout('layout_new');
+		$this->setTemplate('show2');
 		
 	}
 	
