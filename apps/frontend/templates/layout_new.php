@@ -4,6 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <?php include_http_metas() ?>
+    <?php include_metas() ?>
+    <?php include_title() ?>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/new_layout/css/style.css">
@@ -22,8 +26,10 @@
             <div class="container">
                 <nav class="header-nav d-flex justify-content-between">
                     <div class="nav-logo">
-                        <a href="#" target="_blank"><img src="/new_layout/images/icon-image.png" alt=""></a>
+                        <a href="#" target="_blank"><img src="<?php echo u_avatar(); ?>" alt=""></a>
+                        <span><?php echo u_settings('logo_text'); ?></span>
                     </div>
+
                     <div class="nav-navigation d-flex align-items-center">
                         <ul class="d-flex m-0">
                             <li><a class="nav-link mr-4 pb-2" href="#">Take a quizz</a></li>
