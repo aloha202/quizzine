@@ -17,3 +17,10 @@
 .user-card .card-content{
     padding: 20px;
 }
+
+
+.nav-logo span{
+    color: #fff;
+    font-size: 1em;
+    padding-left: 10px;
+}
