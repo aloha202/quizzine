@@ -52,6 +52,56 @@ class authActions extends myActions {
          */
     }
 
+    public function executeCreate(sfWebRequest $request)
+    {
+        $user = $this->getUser();
+
+        if(!$user->isAuthenticated()){
+
+            $params = $request->getParameter('signin');
+
+            $gUser = Q::c('sfGuardUser', 'u')
+                ->where('u.email_address = ?', $params['email'])
+                ->fetchOne();
+            if($gUser){
+
+                //here we send an authentication link to the use
+
+                // but until that we'll just be logging him in
+                $user->signin($gUser);
+                $this->processQuizzTake($gUser, $params['quizz_take_id']);
+
+
+            }else {
+
+                $gUser = new sfGuardUser();
+
+                $gUser->fromArray([
+                    'first_name' => $params['name'],
+                    'email_address' => $params['email'],
+                    'username' => $params['email'],
+                    'salt' => sha1(time()),
+                    'is_active' => 1,
+                    'is_super_admin' => 0
+                ]);
+
+                $gUser->password = md5(time());
+                $gUser->save();
+
+
+                $user->signin($gUser);
+                $this->processQuizzTake($gUser, $params['quizz_take_id']);
+            }
+
+            return $this->renderText("1");
+        }
+
+
+        return $this->renderText("0");
+
+
+    }
+
     public function executeSignin($request) {
         $user = $this->getUser();
         $this->processPage();
@@ -192,7 +242,37 @@ class authActions extends myActions {
     {
         $this->processPage();
         //$this->redirectToSystemPage('activation_successful');        
-    }        
+    }
+
+
+    protected function processQuizzTake($GuardUser, $quizz_take_id){
+
+        if($quizz_take_id){
+            $QuizzTake = Q::f('QuizzTake', $quizz_take_id);
+
+            if($QuizzTake && !$QuizzTake->user_id ){
+
+                $QuizzTake->user_id = $GuardUser->id;
+
+                $QuizzTake->save();
+
+                if($QuizzTake->user_cookie_id) {
+                    $OtherTakes = Q::c('QuizzTake', 't')
+                        ->where('t.user_cookie_id = ?', $QuizzTake->user_cookie_id)
+                        ->andWhere('t.user_id IS NULL')
+                        ->execute()
+                        ;
+
+                    foreach($OtherTakes as $Take){
+                        $Take->user_id = $QuizzTake->user_id;
+                        $Take->save();
+                    }
+                }
+
+            }
+        }
+
+    }
 
 /* --- ACTIONS --- */    
 

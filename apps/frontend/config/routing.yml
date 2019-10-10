@@ -36,6 +36,9 @@ activate:
 registration_complete:
   url: /:username/auth/registration/complete
   param: { module: auth, action: registrationComplete }
+create_user:
+  url: /:username/auth/create
+  param: { module: auth, action: create }
 signin:
   url: /:username/auth/signin
   param: { module: auth, action: signin }

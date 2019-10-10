@@ -13,7 +13,6 @@
                     <?php foreach ($Question->getAnswers() as $Answer): ?>
                         <p><input type="radio" name="question[<?php echo $Question->id; ?>]" value="<?php echo $Answer->id; ?>" class="mr-3"><?php echo $Answer; ?></p>
                     <?php endforeach; ?>
-
                 </div>
 
                 <?php endforeach; ?>
@@ -79,18 +78,9 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 member-form">
-                        <h4>Want to become a member?</h4>
-                        <div class="card">
-                            <form action="/marinaraduk/auth/signin" method="post" class="p-3 member-form">
-                                <input class='member-input' type="text" name="signin[username]" id="signin_username" placeholder="Your name">
-                                <input class='member-input' type="password" name="signin[password]" id="signin_password" placeholder="Your password">
-                                <button class="btn btn-login form-button">Log in</button>
-                            </form>
-                        </div>
-                        <div class="mt-3 p-3 card-facebook d-flex justify-content-center align-items-center">
-                            <i class="fab fa-facebook-f"></i>
-                            <a href="" class="login">Log in with Facebook</a>
-                        </div>
+
+                        <?php include_component('auth', 'block', ['position' => '', 'QuizzTake' => $Quizz->QuizzTake]); ?>
+
                     </div>
                 </div>
             </div>
@@ -119,43 +109,14 @@
                 </div>
             </div>
         <?php endforeach; ?>
-            <?php /*
-            <div class="card-result d-flex justify-content-start w-100 p-3 my-3">
-                <div class="quizz-result">
-                    <h5>What is the flag of UK called?</h5>
-                    <p class="true">Union Jack</p>
-                </div>
-            </div>
-            <div class="card-result d-flex justify-content-start w-100 p-3 my-3">
-                <div class="quizz-result">
-                    <h5>When do the Irish celebrate St. Patrick's Day?</h5>
-                    <div class="your-answer d-flex">
-                        <span>Your answer: &nbsp;</span>
-                        <p class="false">5 November</p>
-                    </div>
-                    <div class="correct-answer d-flex">
-                        <span>Your answer: &nbsp;</span>
-                        <p class="true">17 March</p>
-                    </div>
-                </div>
-            </div>
- */ ?>
+
         </div>
         <section class="section member-section mt-5">
             <div class="container">
                 <div class="col-12 member-form-down">
-                    <h4>Want to become a member?</h4>
-                    <div class="card">
-                        <form action="/marinaraduk/auth/signin" method="post" class="p-3 member-form-down">
-                            <input class='member-input' type="text" name="signin[username]" id="signin_username" placeholder="Your name">
-                            <input class='member-input' type="password" name="signin[password]" id="signin_password" placeholder="Your password">
-                            <button class="btn btn-login form-button">Log in</button>
-                        </form>
-                    </div>
-                    <div class="mt-3 p-3 card-facebook d-flex justify-content-center align-items-center">
-                        <i class="fab fa-facebook-f"></i>
-                        <a href="" class="login">Log in with Facebook</a>
-                    </div>
+
+                    <?php include_component('auth', 'block', ['position' => '-down', 'QuizzTake' => $Quizz->QuizzTake]); ?>
+
                 </div>
             </div>
         </section>
@@ -167,3 +128,5 @@
 
     </section>
 <?php endif; ?>
+
+<?php echo get_slot('auth_js'); ?>

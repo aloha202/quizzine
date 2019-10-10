@@ -30,7 +30,7 @@ class sfGuardUser extends PluginsfGuardUser
     
     public function getName()
     {
-        return $this->getProfile()->getName();
+        return $this->getFirstName() ? $this->getFirstName() : $this->getUsername();
     }
     
     public function getFullName()

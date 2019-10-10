@@ -25,6 +25,7 @@ generator:
 #          back: {action: back, label: Back to Quizzes list, params: {class: 'btn btn-default'}, icon: cog}
         batch_actions: {}
         display: [created_at, User, percentage]
+        sort: [created_at, desc]
       filter:
         display: [quizz_id]
       form:    ~

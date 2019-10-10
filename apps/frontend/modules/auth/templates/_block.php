@@ -1,50 +1,57 @@
-<div class="art-block">
-    <div class="art-block-tl"></div>
-    <div class="art-block-tr"></div>
-    <div class="art-block-bl"></div>
-    <div class="art-block-br"></div>
-    <div class="art-block-tc"></div>
-    <div class="art-block-bc"></div>
-    <div class="art-block-cl"></div>
-    <div class="art-block-cr"></div>
-    <div class="art-block-cc"></div>
-    <div class="art-block-body">
-        <?php if ($sf_user->isAuthenticated()): ?>
-            <div class="art-blockheader">
-                <div class="l"></div>
-                <div class="r"></div>
-                <h3 class="t">Welcome!</h3>
-            </div>
-            <div class="art-blockcontent">
-                <div class="art-blockcontent-body">
-                    <div>
-                        Hello, <strong><?php echo $username; ?></strong>
-                        <ul>
-                            <?php foreach($menu as $item): ?>
-                                <li><?php echo link_to($item[0], $item[1]); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>                
-                    <div class="cleared"></div>
-                </div>
-            </div>
-        <?php else: ?>
-            <div class="art-blockheader">
-                <div class="l"></div>
-                <div class="r"></div>
-                <h3 class="t">Sign in</h3>
-            </div>
-            <div class="art-blockcontent">
-                <div class="art-blockcontent-body">
-                    <div>
-                        <?php include_component('auth', 'form'); ?>
-                    </div>                
-                    <div class="cleared"></div>
-                </div>
-            </div>        
 
-        <?php endif; ?>
-        <div class="cleared"></div>
+    <?php if($user): ?>
+        <div class="card user-card">
+            <div class="card-content">
+            Hello, <?php echo $user->getName(); ?>
+            </div>
+        </div>
+    <?php else: ?>
+        <h4>Want to become a member?</h4>
+        <div class="card">
+            <form action="<?php echo u_url('@create_user'); ?>" method="post" class="p-3 signin-form member-form<?php echo $position; ?>">
+                <input type="hidden" name="signin[quizz_take_id]" value="<?php echo $QuizzTake->id; ?>" >
+                <input class='member-input' type="text" name="signin[name]" id="signin_username" placeholder="Your name" required="true">
+                <input class='member-input' type="text" name="signin[email]" id="signin_email" placeholder="Your email" required="true">
+                <button class="btn btn-login form-button">Submit</button>
+            </form>
+        </div>
+        <div class="mt-3 p-3 card-facebook d-flex justify-content-center align-items-center">
+            <i class="fab fa-facebook-f"></i>
+            <a href="" class="login">Log in with Facebook</a>
+        </div>
 
-    </div>
-</div>
+
+        <?php slot('auth_js'); ?>
+        <script type="text/javascript">
+
+
+            $(function () {
+
+                $('.signin-form').submit(function () {
+
+                    $.post(this.action, $(this).serialize(), function(resp){
+
+//                        alert(resp);
+
+                        if(resp == "1"){
+                            document.location.href = document.location.href;
+                        }
+
+                    });
+
+                    return false;
+
+                });
+
+            })
+
+
+
+        </script>
+
+        <?php end_slot(); ?>
+
+
+
+    <?php endif; ?>
+

@@ -19,13 +19,13 @@ class authComponents extends sfComponents{
     
     public function executeBlock()
     {
+
+        $this->user = null;
         if($this->getUser()->isAuthenticated()){
-            $this->username = $this->getUser()->getGuardUser()->getUsername();
-            $this->menu = array(
-                array('Profile', 'profile/index'),
-                array('Signout', 'auth/signout')
-            );
+            $this->user = $this->getUser()->getGuardUser();
         }
+
     }
+
     
 }
